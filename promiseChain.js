@@ -1,25 +1,17 @@
-function async(){
+function getData(data){
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
-            console.log("data 1")
-            resolve("success");
-        },2000);
+            console.log("data",data);
+            resolve("sucess");
+        },2000)
     })
 }
-function async2(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            console.log("data 2")
-            resolve("success");
-        },2000);
-    })
-}
-console.log("getting data one");
-let p1 = async();
-p1.then((reasult)=>{
-    console.log("getting data one");
-    let p2 = async2();
-    p2.then((reasult)=>{
-        console.log(reasult);
-    })
-});
+getData(1).then(()=>{
+    return getData(2)
+})
+.then(()=>{
+    return getData(3);
+})
+.then(()=>{
+    return getData(4);
+})
